@@ -1,1 +1,12 @@
-/usr/local/bin/log-archive
+#!/bin/bash
+
+arc_date=$(date +%Y%m%d_%H%M%S)
+log_tar_name="logs_archive_$arc_date.tar.gz"
+where_to="$1"
+
+tar -czf "$log_tar_name" /var/log
+cp "$log_tar_name" "$where_to"
+
+echo "Archive Created: $where_to/$log_tar_name"
+
+
